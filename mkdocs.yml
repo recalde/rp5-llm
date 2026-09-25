@@ -1,0 +1,39 @@
+site_name: RP5 LLM
+site_description: A local LLM appliance for the Retroid Pocket 5
+site_url: https://recalde.github.io/rp5-llm/
+repo_url: https://github.com/recalde/rp5-llm
+repo_name: recalde/rp5-llm
+docs_dir: docs
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: teal
+  features:
+    - navigation.sections
+    - toc.follow
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Architecture: architecture.md
+  - Hardware: hardware.md
+  - Installation: flashing.md
+  - First Boot: first-boot.md
+  - Web Setup: web-setup.md
+  - Web Installer: web-installer.md
+  - LLM Runtime: runtime.md
+  - Models: models.md
+  - UI: ui.md
+  - API: api.md
+  - Benchmarking: benchmarking.md
+  - Development: cursor-setup.md
+  - Troubleshooting: troubleshooting.md
+  - Recovery: recovery.md
+  - Design: design/web-management.md
+plugins:
+  - search

@@ -90,7 +90,15 @@ cd ~/workspaces/rp5-llm
 sudo ./scripts/bootstrap.sh
 ```
 
-Today this records the live hardware and creates `/opt/rp5-llm`, `/var/lib/rp5-llm`, and `/etc/rp5-llm`. It is safe to run again. It does not install llama.cpp, download a model, or change boot settings. Those steps are the work to finish over SSH. CPU inference comes before any Vulkan attempt.
+Today this records the live hardware and creates `/opt/rp5-llm`, `/var/lib/rp5-llm`, and `/etc/rp5-llm`. It is safe to run again. It does not install llama.cpp, download a model, or change boot settings. CPU inference comes before any Vulkan attempt.
+
+The dashboard and setup wizard are a separate service:
+
+```bash
+sudo ./scripts/install-ui.sh
+```
+
+On the device that serves `http://127.0.0.1:8080/`. The longer notes are in [docs/](docs/index.md).
 
 Running the same command on the Mac only prints a hardware report. It does not create those directories unless it is actually on aarch64 Linux.
 

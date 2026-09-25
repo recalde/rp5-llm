@@ -1,0 +1,12 @@
+# Facts that do not depend on a live device. RAM, storage, and temperature
+# are measured at runtime and are not listed here.
+device: Retroid Pocket 5
+soc: Qualcomm SM8250
+cpu: Snapdragon 865
+gpu: Adreno 650
+arch: aarch64
+display: 1920x1080
+linux: Pocknix on microSD
+android: internal UFS, not modified by this project
+vulkan: Mesa Turnip, experimental until a benchmark says otherwise
+panel_note: 2026 12 GB units may need the Visionox marker; that panel is untested here

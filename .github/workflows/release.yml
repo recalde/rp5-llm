@@ -1,0 +1,41 @@
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install PyYAML
+        run: python -m pip install pyyaml
+      - name: Build the source archive and manifest
+        run: |
+          mkdir -p dist
+          name="rp5-llm-${GITHUB_REF_NAME}"
+          git archive --format=tar.gz --prefix="${name}/" -o "dist/${name}.tar.gz" HEAD
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import yaml
+          models = yaml.safe_load(Path("config/models.yaml").read_text())
+          hardware = yaml.safe_load(Path("config/hardware.yaml").read_text())
+          Path("dist/model-manifest.json").write_text(json.dumps(models, indent=2) + "\n")
+          Path("dist/hardware-manifest.json").write_text(json.dumps(hardware, indent=2) + "\n")
+          PY
+          (cd dist && sha256sum ./* > SHA256SUMS)
+      - name: Publish the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" dist/* \
+            --title "${GITHUB_REF_NAME}" \
+            --notes "Source archive, checksums, and the model and hardware manifests. This tag does not include a custom Pocknix image."

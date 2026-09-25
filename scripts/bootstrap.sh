@@ -68,5 +68,5 @@ else
 fi
 
 log_ok "runtime directories are ready"
-log_warn "llama.cpp, model download, and the systemd service are not installed yet"
-log_warn "keep CPU inference working before trying Vulkan"
+log_warn "llama.cpp is not installed yet; CPU inference still has to come first"
+log_warn "dashboard: sudo ./scripts/install-ui.sh"

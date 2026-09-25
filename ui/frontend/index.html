@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RP5 Local LLM</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <main class="screen">
+    <header class="top">
+      <div>
+        <p class="eyebrow">Retroid Pocket 5</p>
+        <h1>RP5 Local LLM</h1>
+      </div>
+      <div class="top-meta">
+        <p id="clock">--:--:--</p>
+        <a class="button" href="/setup">Setup</a>
+      </div>
+    </header>
+
+    <section class="grid" aria-live="polite">
+      <article class="panel status-panel">
+        <p class="label">Status</p>
+        <p class="status-line"><span id="dot" class="dot"></span><span id="status">…</span></p>
+        <p id="device" class="sub">detecting</p>
+      </article>
+
+      <article class="panel">
+        <p class="label">Model</p>
+        <p id="model-name" class="value">…</p>
+        <p id="model-file" class="sub"></p>
+      </article>
+
+      <article class="panel">
+        <p class="label">Backend</p>
+        <p id="backend" class="value">…</p>
+        <p class="sub">CPU stays available</p>
+      </article>
+
+      <article class="panel">
+        <p class="label">IP address</p>
+        <p id="ip" class="value">…</p>
+      </article>
+
+      <article class="panel">
+        <p class="label">API</p>
+        <p id="api" class="value value-small">…</p>
+        <p id="exposure" class="sub"></p>
+      </article>
+
+      <article class="panel">
+        <p class="label">Uptime</p>
+        <p id="uptime" class="value">00:00:00</p>
+      </article>
+
+      <article class="panel">
+        <p class="label">Calls</p>
+        <p id="calls" class="value">0</p>
+        <p id="active" class="sub">0 active</p>
+      </article>
+
+      <article class="panel">
+        <p class="label">Last request</p>
+        <p id="last" class="value">—</p>
+      </article>
+
+      <article class="panel">
+        <p class="label">Tokens</p>
+        <p class="token-line">prompt <span id="prompt-tokens">—</span></p>
+        <p class="token-line">generated <span id="generated-tokens">—</span></p>
+      </article>
+    </section>
+
+    <footer class="bottom">
+      <p>Prompts and replies are not stored.</p>
+      <button id="history-toggle" class="button" type="button">Requests</button>
+    </footer>
+  </main>
+
+  <section id="history" class="history" hidden>
+    <div class="history-head">
+      <h2>Recent requests</h2>
+      <button id="history-close" class="button" type="button">Close</button>
+    </div>
+    <div id="history-rows" class="history-rows"></div>
+  </section>
+  <script src="/app.js"></script>
+</body>
+</html>

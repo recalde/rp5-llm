@@ -1,0 +1,24 @@
+# Models the setup wizard is allowed to select.
+# A download is refused while sha256 is empty. Pin a checksum before enabling it.
+models:
+  small:
+    name: Qwen2.5 1.5B Instruct
+    profile: small
+    repo: Qwen/Qwen2.5-1.5B-Instruct-GGUF
+    file: qwen2.5-1.5b-instruct-q4_k_m.gguf
+    context: 4096
+    ram_gb: 2
+    disk_gb: 1.2
+    sha256: ""
+    note: Recommended starting size. Checksum is not pinned yet, so the installer will not download it.
+
+  medium:
+    name: Qwen2.5 3B Instruct
+    profile: medium
+    repo: Qwen/Qwen2.5-3B-Instruct-GGUF
+    file: qwen2.5-3b-instruct-q4_k_m.gguf
+    context: 4096
+    ram_gb: 4
+    disk_gb: 2.1
+    sha256: ""
+    note: Experimental on 8 GB-class devices. Checksum is not pinned yet, so the installer will not download it.

@@ -1,0 +1,16 @@
+[Unit]
+Description=RP5 LLM dashboard, status API, and inference gateway
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment=PYTHONPATH=/opt/rp5-llm/src/ui/backend
+EnvironmentFile=-/etc/rp5-llm/defaults.env
+EnvironmentFile=-/etc/rp5-llm/ui.env
+ExecStart=/opt/rp5-llm/venv/bin/python -m rp5_llm
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+[Unit]
+Description=RP5 LLM llama-server
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=/opt/rp5-llm/bin/llama-server
+
+[Service]
+Type=simple
+ExecStart=/opt/rp5-llm/bin/llama-server --host 127.0.0.1 --port 8081
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

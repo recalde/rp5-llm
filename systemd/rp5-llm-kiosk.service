@@ -1,0 +1,15 @@
+[Unit]
+Description=RP5 LLM fullscreen dashboard
+After=rp5-llm-ui.service graphical.target
+Wants=rp5-llm-ui.service
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/rp5-llm/ui.env
+EnvironmentFile=-/var/lib/rp5-llm/ui.env
+ExecStart=/opt/rp5-llm/src/scripts/kiosk.sh
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=graphical.target

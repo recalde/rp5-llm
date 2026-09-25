@@ -1,0 +1,13 @@
+[Unit]
+Description=Apply a validated RP5 LLM setup plan
+After=rp5-llm-ui.service
+
+[Service]
+Type=oneshot
+Environment=PYTHONPATH=/opt/rp5-llm/src/ui/backend
+Environment=RP5_LLM_ALLOW_PRIVILEGED_APPLY=true
+Environment=RP5_LLM_ALLOW_HOST_CHANGES=true
+EnvironmentFile=-/etc/rp5-llm/defaults.env
+EnvironmentFile=-/var/lib/rp5-llm/ui.env
+ExecStart=/opt/rp5-llm/venv/bin/python -m rp5_llm.apply
+RemainAfterExit=yes

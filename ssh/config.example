@@ -1,0 +1,11 @@
+# Copy the Host block into ~/.ssh/config, or let scripts/prepare-ssh.sh
+# append it with --write-config after the first key login works.
+# Replace the HostName with the address shown when SSH is turned on.
+
+Host rp5
+  HostName 192.168.1.50
+  User deck
+  IdentityFile ~/.ssh/id_ed25519
+  IdentitiesOnly yes
+  ServerAliveInterval 30
+  ServerAliveCountMax 4
